@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <title>Accordion Menu</title>
+  </head>
+  <body>
+    <div class="wrapper">
+      <!-- Menu -->
+      <ul class="menu">
+        <!-- Profile -->
+        <li id="menu-profile" class="menu__item">
+          <a class="menu__btn" href="#menu-profile"
+            ><i class="fas fa-user"></i>Profile</a
+          >
+          <ul class="submenu">
+            <li class="submenu__item">
+              <a class="submenu__link" href="#">Posts</a>
+            </li>
+            <li class="submenu__item">
+              <a class="submenu__link" href="#">Pictures</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Messages -->
+        <li id="menu-messages" class="menu__item">
+          <a class="menu__btn" href="#menu-messages"
+            ><i class="fas fa-envelope"></i>Messages</a
+          >
+          <ul class="submenu">
+            <li class="submenu__item">
+              <a class="submenu__link" href="#">New</a>
+            </li>
+            <li class="submenu__item">
+              <a class="submenu__link" href="#">Sent</a>
+            </li>
+            <li class="submenu__item">
+              <a class="submenu__link" href="#">Spam</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Settings -->
+        <li id="menu-settings" class="menu__item">
+          <a class="menu__btn" href="#menu-settings"
+            ><i class="fas fa-cog"></i>Settings</a
+          >
+          <ul class="submenu">
+            <li class="submenu__item">
+              <a class="submenu__link" href="#">Password</a>
+            </li>
+            <li class="submenu__item">
+              <a class="submenu__link" href="#">Language</a>
+            </li>
+            <li class="submenu__item">
+              <a class="submenu__link" href="#">Spam</a>
+            </li>
+          </ul>
+        </li>
+
+        <!-- Logout -->
+        <li id="menu-logout" class="menu__item">
+          <a class="menu__btn" href="#menu-logout"
+            ><i class="fas fa-sign-out-alt"></i>Logout</a
+          >
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
