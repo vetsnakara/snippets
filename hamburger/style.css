@@ -1,0 +1,207 @@
+:root {
+  --header-bg-color: rgba(13, 110, 139, 0.75);
+  --overlay-bg-color: rgba(24, 39, 51, 0.85);
+}
+
+/*-------
+  Global
+ --------*/
+
+* {
+  box-sizing: border-box;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+/*--------
+  Section
+ ---------*/
+
+.section {
+  height: 100vh;
+}
+
+/*-------
+  Header
+ --------*/
+
+.header {
+  position: relative;
+  height: 100vh;
+  background-image: linear-gradient(
+      var(--header-bg-color),
+      var(--header-bg-color)
+    ),
+    url("img/showcase.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+}
+
+.header__content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  text-align: center;
+  max-width: 1000px;
+}
+
+.header__title {
+  margin: 0;
+  font-size: 3rem;
+  text-align: center;
+}
+
+/*--------------
+   Navigation
+---------------*/
+
+/* Menu Wrapper */
+.menu__wrapper {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 150vmax;
+  width: 150vmax;
+  background-color: var(--overlay-bg-color);
+  border-radius: 100%;
+
+  z-index: -1;
+  transform: translate(-50%, -50%) scale(0);
+
+  transition: all 0.5s;
+}
+
+/* Reveal Menu on Button Click */
+.menu__toggle:checked ~ .menu__wrapper {
+  z-index: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Hide Input Checkbox */
+.menu__toggle {
+  display: none;
+}
+
+/* Menu Button */
+.menu__button {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  width: 50px;
+  height: 50px;
+  background-color: var(--header-bg-color);
+  cursor: pointer;
+  padding: 12px;
+}
+
+.menu__toggle-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.menu__toggle-line {
+  position: absolute;
+  left: 50%;
+  width: 35px;
+  height: 3px;
+  background-color: #fff;
+  transition: all 0.2s;
+}
+
+.menu__toggle-line--middle {
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.menu__toggle-line--top,
+.menu__toggle-line--bottom {
+  position: absolute;
+  transform: translateX(-50%);
+}
+
+.menu__toggle-line--top {
+  top: 0;
+}
+
+.menu__toggle-line--bottom {
+  bottom: 0;
+}
+
+/* Animate Hamburger on Click */
+.menu__toggle:checked + .menu__button .menu__toggle-line--middle {
+  transform: translate(-50%, -50%) rotate(225deg);
+}
+
+.menu__toggle:checked + .menu__button .menu__toggle-line--top {
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(315deg);
+}
+
+.menu__toggle:checked + .menu__button .menu__toggle-line--bottom {
+  bottom: 50%;
+  transform: translate(-50%, 50%) rotate(315deg);
+}
+
+/* Animate Hamburger on Hover (if clicked) */
+.menu__toggle:checked + .menu__button:hover .menu__toggle-line--middle {
+  transform: translate(-50%, -50%) rotate(315deg);
+}
+
+.menu__toggle:checked + .menu__button:hover .menu__toggle-line--top {
+  transform: translate(-50%, -50%) rotate(405deg);
+}
+
+.menu__toggle:checked + .menu__button:hover .menu__toggle-line--bottom {
+  transform: translate(-50%, 50%) rotate(405deg);
+}
+
+/* Menu List */
+.menu__list {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+/* Menu Item */
+.menu__item {
+  margin-bottom: 1rem;
+}
+
+/* Animated Menu Item Underline */
+.menu__item::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 3px;
+  background-color: coral;
+  transition: all 0.3s;
+}
+
+.menu__item:hover::after {
+  width: 100%;
+}
+
+/* Menu Link */
+.menu__link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 2rem;
+}
