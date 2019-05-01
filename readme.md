@@ -1,3 +1,3 @@
 # TOC
 
-- [Pure CSS hamburger menu with overlay](https://vetsnakara.github.io/snippets/hamburger/index.html)
+- [Pure CSS hamburger menu with overlay](https://vetsnakara.github.io/snippets/hamburger)
