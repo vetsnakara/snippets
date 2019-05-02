@@ -1,0 +1,248 @@
+/*---------
+  Variables 
+ ----------*/
+:root {
+  --max-width: 1100px;
+  --container-padding: 20px;
+  --primary-color: #778beb;
+  --secondary-color: #546de5;
+  --timeline-width: 5px;
+  --timeline-item-offset: 35px;
+  --timeline-item-width: 400px;
+}
+
+.timeline__item {
+  --timeline-item-width-md: 250px;
+}
+
+/*-------
+  Global 
+ --------*/
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+}
+
+.fas {
+  display: inline-block;
+  margin-right: 0.4em;
+}
+
+/*------
+  Utils 
+ -------*/
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--container-padding);
+}
+
+/*-----
+  Page 
+ ------*/
+.page {
+  display: flex;
+  flex-direction: column;
+}
+
+/*-------
+  Header 
+ --------*/
+.header {
+  background-color: var(--primary-color);
+  padding: 3rem 0;
+}
+
+.header__title {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #fff;
+  margin: 0 0 1rem;
+}
+
+.header__subtitle {
+  display: block;
+  font-size: 1.2rem;
+  font-weight: normal;
+  text-align: center;
+  color: #fff;
+}
+
+/*-----------------
+  Section Timeline
+ ------------------*/
+.section-timeline {
+  flex-grow: 1;
+  padding: 40px 0;
+  background-color: var(--secondary-color);
+}
+
+/*---------
+  Timeline
+ ----------*/
+/* Item title */
+.timeline__title {
+  margin: 0 0 0.5rem;
+}
+
+/* Item text content */
+.timeline__content {
+  margin: 0;
+  padding: 0;
+  line-height: 1.5;
+}
+
+/* Item */
+.timeline__item {
+  color: #fff;
+  position: relative;
+  background-color: #fff;
+  width: var(--timeline-width);
+  margin: 0 auto;
+  padding-bottom: 20px;
+}
+
+/* Item inner wrapper */
+.timeline__inner {
+  --arrow-offset: -35px;
+
+  width: var(--timeline-item-width);
+  background-color: var(--primary-color);
+  padding: 20px;
+  border-radius: 8px;
+  position: relative;
+
+  opacity: 0; /* Hide initially */
+  transition: transform 1s, opacity 1s;
+}
+
+/* Position items relative to vertical bar */
+.timeline__item:nth-child(odd) .timeline__inner {
+  left: var(--timeline-item-offset);
+}
+
+.timeline__item:nth-child(even) .timeline__inner {
+  left: calc(
+    -1 * (var(--timeline-item-width) + var(--timeline-item-offset) -
+          var(--timeline-width))
+  );
+}
+
+/* Initial shift of odd items */
+.timeline__item:nth-child(odd) .timeline__inner {
+  transform: translateX(30px);
+}
+
+/* Initial shift of even items */
+.timeline__item:nth-child(even) .timeline__inner {
+  transform: translateX(-30px);
+}
+
+/* Initial shift of even items (small screens) */
+@media (max-width: 610px) {
+  .timeline__item:nth-child(even) .timeline__inner {
+    transform: translateX(30px);
+  }
+}
+
+/* Show items */
+.timeline__item--show .timeline__inner {
+  opacity: 1;
+  transform: translateX(0px) !important;
+}
+
+/* Dots */
+.timeline__item::after {
+  content: "";
+  display: block;
+  position: absolute;
+  left: -10px;
+  bottom: 35px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background-color: #fff;
+  transition: all 0.5s;
+}
+
+/* Change dot when item shows */
+.timeline__item--show::after {
+  background-color: var(--primary-color);
+}
+
+/* Arrows */
+.timeline__inner::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 20px;
+  border-color: transparent;
+}
+
+.timeline__item:nth-child(odd) .timeline__inner::before {
+  border-right-color: var(--primary-color);
+  left: var(--arrow-offset);
+}
+
+.timeline__item:nth-child(even) .timeline__inner::before {
+  border-left-color: var(--primary-color);
+  right: var(--arrow-offset);
+}
+
+/*--------------
+  Media Queries
+ --------------*/
+@media (max-width: 950px) {
+  /* Reduce item width */
+  .timeline__inner {
+    width: var(--timeline-item-width-md);
+  }
+
+  /* Correct item position relative to vertical bar */
+  .timeline__item:nth-child(even) .timeline__inner {
+    left: calc(
+      -1 * (var(--timeline-item-width-md) + var(--timeline-item-offset))
+    );
+  }
+}
+
+@media (max-width: 610px) {
+  /* Push vertical bar to the left */
+  .timeline__item {
+    margin: 0 0 0 1rem;
+  }
+
+  /* Make item width responsive */
+  .timeline__inner {
+    width: calc(100vw - 80px);
+  }
+
+  /* Push even items to right */
+  .timeline__item:nth-child(even) .timeline__inner {
+    left: var(--timeline-item-offset);
+  }
+
+  /* Move arrow on even items to the left side */
+  .timeline__item:nth-child(even) .timeline__inner::before {
+    border-left-color: transparent;
+    border-right-color: var(--primary-color);
+    left: var(--arrow-offset);
+  }
+}
